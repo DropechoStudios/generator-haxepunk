@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="<%= appTitle %>" package="<%= packageName %>" version="1.0.0" company="<%= company %>" />
+
+    <app file="Main" main="Main" path="bin" />
+
+    <window fps="30" background="0x000000" />
+    <window width="1000" height="600" resizable="true" unless="mobile" />
+    <window fullscreen="true" if="mobile" />
+    <window orientation="landscape" vsync="true" antialiasing="0" if="cpp" />
+
+    <source path="src" />
+
+    <set name="html5-backend" value="openfl-bitfive" />
+
+    <haxelib name="openfl" />
+    <haxelib name="nape" />
+    <haxelib name="HaxePunk" />
+
+    <assets path="assets/gfx" rename="gfx" include="*.png|*.jpg" />
+    <assets path="assets/audio" rename="sfx" include="*.wav|*.mp3" if="flash" />
+    <assets path="assets/audio" rename="sfx" include="*.ogg|*.mp3" unless="flash" />
+    <assets path="assets/font" rename="font" include="*.ttf" />
+
+    <icon path="assets/HaxePunk.svg" />
+</project>
+
