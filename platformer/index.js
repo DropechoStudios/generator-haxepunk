@@ -1,8 +1,12 @@
 'use strict';
+var util = require('util');
+var path = require('path');
 var yeoman = require('yeoman-generator');
+var chalk = require('chalk');
 
 module.exports = yeoman.generators.Base.extend({
     init: function init() {
+        this.pkg = require('../package.json');
         this.config.loadConfig();
     },
 
@@ -31,12 +35,8 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     config: function config() {
-        this.appTitle = this._.titleize(this.config.get('appname'));
-        this.packageName = [
-            "com",
-            this._.classify(this.company).toLowerCase(),
-            this._.classify(this.appTitle).toLowerCase()
-        ].join('.');
+        this.appTitle = this.config;
+        this.packageName = ["com", this.company, this.appTitle].join('.');
     },
 
     src: function src() {
@@ -45,7 +45,9 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     assets: function assets() {
-        this.directory('assets');
+        this.directory('assets/audio');
+        this.directory('assets/font');
+        this.directory('assets/gfx');
     },
 
     projectfiles: function projectfiles() {
