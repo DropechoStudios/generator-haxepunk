@@ -1,5 +1,6 @@
 'use strict';
 var yeoman = require('yeoman-generator');
+var path = require('path');
 
 module.exports = yeoman.generators.Base.extend({
     init: function init() {
@@ -40,7 +41,7 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     src: function src() {
-        this.directory('src');
+        this._templateDirectory('src');
         this.mkdir('src/entities');
     },
 
@@ -51,5 +52,24 @@ module.exports = yeoman.generators.Base.extend({
     projectfiles: function projectfiles() {
         this.copy('_.editorconfig', '.editorconfig');
         this.template('_project.xml', 'project.xml');
+    },
+
+    _templateDirectory: function _templateDirectory(source, destination) {
+        destination = destination || source;
+        var root = this.isPathAbsolute(source) ? source : path.join(this.sourceRoot(), source);
+        var files = this.expandFiles('**', { dot: true, cwd: root });
+
+        for (var i = 0; i < files.length; i++) {
+            var f = files[i];
+            var src = path.join(root, f);
+            if(path.basename(f).indexOf('_') == 0){
+                var dest = path.join(destination, path.dirname(f), path.basename(f).replace(/^_/, ''));
+                this.template(src, dest);
+            }
+            else{
+                var dest = path.join(destination, f);
+                this.copy(src, dest);
+            }
+        }
     }
 });

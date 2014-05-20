@@ -20,7 +20,7 @@ class MainMenu extends BaseScene
         var screen = HXP.screen;
         var playText:Text;
 
-        var titleText = new Text("Wormhole in one.");
+        var titleText = new Text("<%= appname %>");
         titleText.size = 64;
         titleText.x = (screen.width / 2) - 320;
         titleText.y = screen.height - 256;
@@ -28,7 +28,7 @@ class MainMenu extends BaseScene
         titleText.color = 0xFFFFFF;
         addGraphic(titleText);
 
-        if(Settings.IsMobile) {
+        if(Settings.isMobile) {
             playText = new Text("Tap to play.");
         } else {
             playText = new Text("Press 'ENTER' to play.");

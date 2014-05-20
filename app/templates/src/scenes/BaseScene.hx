@@ -8,6 +8,8 @@ import com.haxepunk.graphics.Text;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.utils.Touch;
 
+import Settings;
+
 #if flash
     import flash.system.System;
 #end
@@ -26,9 +28,31 @@ class BaseScene extends Scene
         checkInput();
     }
 
+    public override function end(){
+        endScene();
+    }
+
+    public override function focusGained(){
+        if(Settings.systemPause){
+            Settings.paused = false;
+        }
+        Settings.systemPause = false;
+    }
+
+    public override function focusLost(){
+        if(!Settings.paused){
+            Settings.systemPause = true;
+        }
+        Settings.paused = true;
+    }
+
+    private function playMusic(soundFile:String){
+        //utils.SoundCache.playMusic(soundFile);
+    }
+
     private function switchScene(newScene:Scene){
         HXP.scene = newScene;
-        super.end();
+        endScene();
     }
 
     private function checkInput() {}
@@ -41,9 +65,12 @@ class BaseScene extends Scene
         return Lambda.count(getTouches());
     }
 
-    private function quitGame(){
+    private function endScene(){
         super.end();
+    }
 
+    private function quitGame(){
+        endScene();
         #if cpp
             Sys.exit(0);
         #elseif flash
