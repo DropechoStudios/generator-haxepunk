@@ -47,7 +47,7 @@ class BaseScene extends Scene
     }
 
     private function playMusic(soundFile:String){
-        //utils.SoundCache.playMusic(soundFile);
+        utils.SoundCache.playMusic(soundFile);
     }
 
     private function switchScene(newScene:Scene){

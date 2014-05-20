@@ -6,6 +6,7 @@ class Settings {
     //Sound data
     public static var maxVolume:Int = 11;
     public static var volume:Int = 11;
+    public static var backgroundMusic:Sfx;
     public static var sfxMuted:Bool = false;
     public static var soundMuted:Bool = false;
 
