@@ -4,7 +4,7 @@
   "description": "A generator for starting haxepunk game projects.",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "vantreeseba/generator-haxepunk",
+  "repository": "DropechoStudios/generator-haxepunk",
   "author": {
     "name": "Ben Van Treese",
     "email": "vantreeseba@gmail.com",
