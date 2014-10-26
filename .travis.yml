@@ -1,7 +1,11 @@
 language: node_js
 node_js:
-  - '0.10'
-before_install:
-  - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-haxepunk' ]; then cd .. && eval "mv $currentfolder generator-haxepunk" && cd generator-haxepunk; fi
+- '0.10'
 
+deploy:
+  provider: npm
+  email: vantreeseba@gmail.com
+  api_key:
+    secure: DYjpS0ZyuBysaH5hPLramM7l40c0WQaEL6PcZHr5edeLs5JtYE5/AFANSLSuIq8U94tXINHDM80HLEeq8AxQZ5s+AjOjnLDpSvKw9Kn/t74ON75fV/F8VGpbwius2GXh7vXP7hAWB+6wO/ubCVZzOt0wCw0WRcVuDsrluiPOL6s=
+  on:
+    repo: DropechoStudios/generator-haxepunk
