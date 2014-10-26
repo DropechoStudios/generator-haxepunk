@@ -9,3 +9,4 @@ deploy:
     secure: DYjpS0ZyuBysaH5hPLramM7l40c0WQaEL6PcZHr5edeLs5JtYE5/AFANSLSuIq8U94tXINHDM80HLEeq8AxQZ5s+AjOjnLDpSvKw9Kn/t74ON75fV/F8VGpbwius2GXh7vXP7hAWB+6wO/ubCVZzOt0wCw0WRcVuDsrluiPOL6s=
   on:
     repo: DropechoStudios/generator-haxepunk
+    tags: true
